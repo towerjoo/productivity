@@ -7,7 +7,7 @@ Metadata
 ====================
 filename: readme.txt
 author: Tower Joo
-email: zhutao.iscas@gmail.com
+email: zhutao.iscas AT gmail.com
 date: 2010-04-01 15:15:45
 notice: the file is in restructuredText format and in English. 
 

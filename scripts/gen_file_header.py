@@ -61,7 +61,7 @@ def get_current_version():
 if __name__ == "__main__":
     data = {
             "author" : "Tower Joo", 
-            "email" : "zhutao.iscas@gmail.com",
+            "email" : "zhutao.iscas AT gmail.com",
             "date" : get_current_format_date()
             }
     opt_parser(data)
