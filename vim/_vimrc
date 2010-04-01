@@ -1,0 +1,18 @@
+set nocompatible
+
+colorscheme torte
+set autoindent
+set smartindent
+set number
+set hls
+set incsearch
+
+set tabstop=4  " one tab equals 4 spaces
+set shiftwidth=4 "VIM visual
+set smarttab    " for the beginning of a line, this allows using shiftwidth instead of tabstop to inset a tab
+set expandtab  "Insert spaces instead of <TAB> character when <TAB> key is pressed. This is very important in Python
+set softtabstop=4 " After pressing the <TAB>, if you want to delete the <TAB>, you will need four times' pressing <BS>, but with this setting four spaces will be assumed as a <TAB> and deleted directly.
+set nobackup
+set fileencoding=utf-8
+set fileencodings=utf-8,gb2312,gbk,chinese
+
