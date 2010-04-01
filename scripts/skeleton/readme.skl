@@ -1,0 +1,22 @@
+====================
+README
+====================
+
+Metadata
+====================
+filename: %(filename)s
+author: %(author)s
+email: %(email)s
+date: %(date)s
+notice: the file is in restructuredText format and in English. 
+
+
+
+Content
+====================
+
+subtitle
+--------------------
+
+subtitle
+--------------------
