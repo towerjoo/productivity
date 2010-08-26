@@ -1,18 +1,66 @@
-set nocompatible
-
-colorscheme torte
+syntax on
+filetype on
+au BufNewFile,BufRead *.as  setf actionscript
+au BufNewFile,BufRead *.mxml set filetype=mxml
+set nu
+set incsearch
 set autoindent
 set smartindent
-set number
-set hls
-set incsearch
 
-set tabstop=4  " one tab equals 4 spaces
-set shiftwidth=4 "VIM visual
-set smarttab    " for the beginning of a line, this allows using shiftwidth instead of tabstop to inset a tab
-set expandtab  "Insert spaces instead of <TAB> character when <TAB> key is pressed. This is very important in Python
-set softtabstop=4 " After pressing the <TAB>, if you want to delete the <TAB>, you will need four times' pressing <BS>, but with this setting four spaces will be assumed as a <TAB> and deleted directly.
-set nobackup
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
+set softtabstop=4
+set backspace=2
+set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,gb2312,gbk,chinese
+set fileencodings=utf-8,gbk,latin-1
 
+
+colorscheme torte
+
+" Tell vim to remember certain things when we exit
+"  '10 : marks will be remembered for up to 10 previously edited files
+"  "100 : will save up to 100 lines for each register
+"  :20 : up to 20 lines of command-line history will be remembered
+"  % : saves and restores the buffer list
+"  n... : where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
+
+" when we reload, tell vim to restore the cursor to the saved position
+augroup JumpCursorOnEdit
+au!
+autocmd BufReadPost *
+\ if expand("<afile>:p:h") !=? $TEMP |
+\ if line("'\"") > 1 && line("'\"") <= line("$") |
+\ let JumpCursorOnEdit_foo = line("'\"") |
+\ let b:doopenfold = 1 |
+\ if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
+\ let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
+\ let b:doopenfold = 2 |
+\ endif |
+\ exe JumpCursorOnEdit_foo |
+\ endif |
+\ endif
+" Need to postpone using "zv" until after reading the modelines.
+autocmd BufWinEnter *
+\ if exists("b:doopenfold") |
+\ exe "normal zv" |
+\ if(b:doopenfold > 1) |
+\ exe "+".1 |
+\ endif |
+" Need to postpone using "zv" until after reading the modelines.
+autocmd BufWinEnter *
+\ if exists("b:doopenfold") |
+\ exe "normal zv" |
+\ if(b:doopenfold > 1) |
+\ exe "+".1 |
+\ endif |
+\ unlet b:doopenfold |
+\ endif
+augroup END
+
+set nobackup
+set title
+set autochdir
